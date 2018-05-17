@@ -31,6 +31,7 @@ primary key (email)
 create table events(
 event_id Int( 11 ) AUTO_INCREMENT NOT NULL,
 event_name varchar(25) not null,
+venue_name varchar(225) not null, 
 event_street_address varchar(225) not null, 
 event_city varchar(25) not null,
 event_state varchar(25) not null,  
@@ -41,6 +42,7 @@ primary key (event_id)
 create table tickets(
 donation_id Int( 11 ) AUTO_INCREMENT NOT NULL,
 event_id Int( 11 ) NOT NULL,
+venue_name varchar(225) not null, 
 event_street_address varchar(225) not null, 
 event_city varchar(25) not null,
 event_state varchar(25) not null,  
