@@ -56,6 +56,10 @@
                         <li>
                             <a href="/about" style="color:#7aacff">About</a>
                         </li>
+                        <li>
+                            <a href="#" style="width:auto;color:#7aacff">Sign Out</a>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -78,46 +82,41 @@
 
 
                     <center>
-                        <h1>Apply for a Ticket</h1>
+                        <h1>Submit New Event</h1>
                     </center>
 
                     <br>
 
                     <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                            </div>
-
-
-                            <div class="form-group col-md-6">
-                                <label for="inputPassword4">Password</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                            </div>
-                        </div>
-
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputAddress">Address</label>
-                                <input type="text" class="form-control" id="inputAddress">
+                                <label for="inputDOB">Venue Name</label>
+                                <input type="text" class="form-control" id="venueName">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="inputAddress2">Address 2</label>
+                                <label for="inputAddress12">Event Name</label>
                                 <input type="text" class="form-control" id="inputAddress2">
                             </div>
                         </div>
 
 
                         <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputAddress">Venue Address</label>
+                                <input type="text" class="form-control" id="inputAddress">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputCity">City</label>
+                                <label for="inputCity">Venue City</label>
                                 <input type="text" class="form-control" id="inputCity">
                             </div>
+
                             <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
+                                <label for="inputState">Venue State</label>
                                 <select id="inputState" class="form-control">
                                     <option value="" selected="selected">Select a State</option>
                                     <option value="AL">Alabama</option>
@@ -173,53 +172,52 @@
                                     <option value="WY">Wyoming</option>
                                 </select>
                             </div>
+
                             <div class="form-group col-md-4">
-                                <label for="inputZip">Zip</label>
+                                <label for="inputZip">Venue Zip</label>
                                 <input type="text" class="form-control" id="inputZip">
                             </div>
+
                         </div>
 
+
                         <div class="form-row">
-
-
-                            <div class="form-group col-md-4">
-                                <label for="inputDOB">Date of Birth</label>
-                                <input type="text" class="form-control" id="inputDOB">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputAARP">AARP #</label>
-                                <input type="text" class="form-control" id="inputAARP">
+                            <div class="form-group col-md-6">
+                                <label for="ticketCount">Number of Tickets</label>
+                                <input type="text" class="form-control" id="ticketCount">
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="form-group col-md-6">
+                                <label for="barcodeNum">Ticket Barcode Number</label>
+                                <input type="text" class="form-control" id="barcodeNum">
                             </div>
-
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="ticketReason">Tell us why you'd like these tickets!</label>
-
-                                <textarea class="form-control" id="ticketReason" rows="4"></textarea>
-
-                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                                <label for="exampleFormControlFile1">Ticket Scan Upload (please include barcode)</label>
+                                <input type="file" class="form-control-file" id="jpg_jpeg_png">
                             </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary">Submit New Event</button>
+                            </div>
+                        </div>
 
                     </form>
+                
 
                 </div>
 
-                <div class="col-md-2">
 
-                </div>
-
+            <div class="col-md-2">
 
             </div>
 
-
         </div>
+      </div>      
 
     </main>
 
