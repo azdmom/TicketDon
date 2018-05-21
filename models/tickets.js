@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Tickets", {
-    donation_id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -8,6 +8,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     event_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },event_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

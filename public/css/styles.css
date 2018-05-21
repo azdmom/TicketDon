@@ -1,0 +1,54 @@
+body {
+    background: url("../img/bg.jpg");
+  }
+  
+  .navbar {
+    background: #0d2b5e;
+  }
+  
+  .navbar-brand {
+    font-size: 30px;
+    font-family: "Merriweather", serif;
+    font-weight: bold;
+    width: 250px;
+  }
+  
+  .navbar-right li {
+    font-family: "Merriweather", serif;
+  }
+  
+  #logo {
+    width: 40px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  main {
+    margin-bottom: 130px;
+  }
+  
+  .jumbotron {
+    font-family: "Oxygen", sans-serif;
+    background: #b7dbff;
+    color: #0d3359;
+  }
+  
+  h2 {
+    color: #0d3359;
+    font-family: "Oxygen", sans-serif;
+  }
+  
+  .footer-copyright {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .navbar-fixed-bottom {
+    font-family: "Merriweather", serif;
+    background-color: #0d2b5e;
+    color: #7aacff;
+    border-top-style: solid;
+    border-top-color: #666666;
+    border-top-width: 3px;
+  }
