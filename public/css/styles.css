@@ -17,7 +17,6 @@ body {
   font-family: "Merriweather", serif;
 }
 
-<<<<<<< HEAD
 .collapsed {
   width: 45px;
 }
@@ -30,8 +29,6 @@ body {
   }
 }
 
-=======
->>>>>>> 4543162024be03f42627b3ca5a03c28887ec2b9f
 #logo {
   width: 40px;
   height: 30px;
@@ -40,11 +37,7 @@ body {
 }
 
 main {
-<<<<<<< HEAD
   margin-bottom: 50px;
-=======
-  margin-bottom: 130px;
->>>>>>> 4543162024be03f42627b3ca5a03c28887ec2b9f
 }
 
 .jumbotron {
@@ -53,16 +46,12 @@ main {
   color: #0d3359;
 }
 
-<<<<<<< HEAD
 h1,
-=======
->>>>>>> 4543162024be03f42627b3ca5a03c28887ec2b9f
 h2 {
   color: #0d3359;
   font-family: "Oxygen", sans-serif;
 }
 
-<<<<<<< HEAD
 .panel-body {
   color: #0d3359;
   font-family: "Oxygen", sans-serif;
@@ -78,11 +67,6 @@ h2 {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
-=======
-.footer-copyright {
-  text-align: center;
-  padding: 20px 0;
->>>>>>> 4543162024be03f42627b3ca5a03c28887ec2b9f
 }
 
 .navbar-fixed-bottom {
@@ -93,7 +77,6 @@ h2 {
   border-top-color: #666666;
   border-top-width: 3px;
 }
-<<<<<<< HEAD
 
 
 
@@ -286,5 +269,3 @@ input[type="password"] {
     width: 100%;
   }
 }
-=======
->>>>>>> 4543162024be03f42627b3ca5a03c28887ec2b9f

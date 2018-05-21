@@ -26,4 +26,3 @@ var transporter = nodemailer.createTransport({
     console.log('Message sent successfully!');
     console.log('Server responded with "%s"', info.response);
  });
-
