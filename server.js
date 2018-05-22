@@ -30,7 +30,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // nodemailer
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
 // Routes
 // =============================================================

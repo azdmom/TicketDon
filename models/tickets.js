@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Post = sequelize.define("Tickets", {
+  var Tickets = sequelize.define("Tickets", {
     event_id: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    ticket_count: {
+    ticket_qty: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
@@ -62,6 +62,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    ticket_barcode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     ticketScan: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -70,5 +77,18 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Post;
+
+  Tickets.associate = function(models){
+    Tickets.belongsTo(models.userRcpts);
+    Tickets.belongsTo(models.userDonor, {
+      foreignKey: {
+        allowNull: false
+      }
+    })
+  };
+
+
+
+
+  return Tickets;
 };
