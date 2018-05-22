@@ -11,8 +11,9 @@ var transporter = nodemailer.createTransport({
    });
 
    const mailOptions = {
+    var recptEmails = ;
     from: 'ticketDon2018@gmail.com', // sender address
-    to: 'ddogjani@gmail.com', // list of receivers
+    to: emails, // list of receivers
     subject: 'A message from TicketDon', // Subject line
     html: '<p><b>Congratulations!</b> You have won the ticket you requested via TicketDon!</p> + <p>Further information will be sent shortly by express mail.</p>'// plain text body
   };
