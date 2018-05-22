@@ -16,27 +16,31 @@ module.exports = function(app) {
   });
 
   app.get("/about", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/about.html"));
+    res.render('about', {});
   });
 
   app.get("/apply", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/apply.html"));
+    res.render('apply', {});
   });
 
   app.get("/donate", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/donate.html"));
+    res.render('donate', {});
   });
 
   app.get("/donorhome", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/donorhome.html"));
+    res.render('donorhome', {});
   });
 
-  app.get("/recipienthome", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/recipienthome.html"));
+  app.get("/recpthome", function(req, res) {
+    res.render('recpthome', {});
   });
 
   app.get("/newEvents", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/newEvents.html"));
+    res.render('newEvents', {});
+  });
+
+  app.get("/events", function(req, res) {
+    res.render('events', {});
   });
 
 };
