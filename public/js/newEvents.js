@@ -89,7 +89,7 @@ $(document).ready(function () {
           return false;;
       }
       if ($.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "Please enter your tickets available") {
-          $("#ticketCount").val(" Please enter your Contact Number");
+          $("#ticketCount").val(" Please enter your available tickets");
           return false;
       }
       var newEvents = {
