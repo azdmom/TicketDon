@@ -1,12 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Tickets", {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
     event_id: {
       type: DataTypes.STRING,
       allowNull: false,
