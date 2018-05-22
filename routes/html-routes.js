@@ -20,7 +20,7 @@ module.exports = function(app) {
   });
 
   app.get("/apply", function(req, res) {
-    res.render('apply', {});
+    res.render('apply', {}); 
   });
 
   app.get("/donate", function(req, res) {
