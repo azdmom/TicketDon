@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "tlsjvfdv1",
+=======
+    "password": "Thacarter1",
+>>>>>>> dfbc7f9f69dfba5a95301e7f67b6ae9f6921bb52
     "database": "ticketDon",
     "host": "127.0.0.1",
     "dialect": "mysql"
