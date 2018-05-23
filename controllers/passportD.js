@@ -12,7 +12,7 @@ module.exports = function (passport, signin) {
 
     // used to deserialize the login
     passport.deserializeUser(function (id, done) {
-        db.userDonor.findById(id).then(function (user) {
+        db.userDonors.findById(id).then(function (user) {
             if (user) {
                 done(null, user.get());
             } else {
@@ -33,7 +33,7 @@ module.exports = function (passport, signin) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
 
-            db.userDonor.findOne({
+            db.userDonors.findOne({
                 where: {
                     email: email
                 }
@@ -54,7 +54,7 @@ module.exports = function (passport, signin) {
                         phone: req.body.phone
                     };
 
-                    db.userDonor.create(data).then(function (newUser, created) {
+                    db.userDonors.create(data).then(function (newUser, created) {
                         if (!newUser) {
                             return done(null, false, {
                                 message: 'an error occured. please try again.'
@@ -90,7 +90,7 @@ module.exports = function (passport, signin) {
                 return bCrypt.compareSync(password, userpass);
             };
 
-            db.userDonor.findOne({
+            db.userDonors.findOne({
                 where: {
                     email: email
                 }

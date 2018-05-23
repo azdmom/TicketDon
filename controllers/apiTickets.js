@@ -43,21 +43,11 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/userTicket", function(req,res){
-  //   var user = {
-  //     email: "ddogjani@gmail.com",
-  //     name: "drita",
-  //     favColor: "blue"
-  //   }
-  //   var availableTickets = [
-
-  //   ]
-  //   for loop ( if tickets where recpt_is !== null){
-    
-  //   }
-  //   res.send(user)
-  // })
-
+  app.get("/api/userTicket", function(req,res){
+  db.Tickets.findAll({where: {[userRcpts.ne]: null}
+  }).then(function(user){
+    res.send(user)
+  })
    
 
   app.delete("/api/tickets/:id", function(req, res) {
@@ -76,5 +66,5 @@ module.exports = function(app) {
       }
     });
   });
-};
-
+});
+}

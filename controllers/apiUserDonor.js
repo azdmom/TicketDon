@@ -9,7 +9,7 @@ module.exports = function(app) {
     // Add sequelize code for creating a post using req.body,
     // then return the result using res.json
 
-    db.userDonor.create({
+    db.userDonors.create({
       email: req.body.email,
       password: req.body.password,
       street_address: req.body.street_address,
@@ -17,9 +17,9 @@ module.exports = function(app) {
       state: req.body.state, 
       zip_code: req.body.zip_code
 
-    }).then(function(dbuserDonor) {
+    }).then(function(dbuserDonors) {
 
-      res.json(dbUserDonor);
+      res.json(dbUserDonors);
       
     });
 

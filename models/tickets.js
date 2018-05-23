@@ -84,7 +84,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     });
-    Tickets.belongsTo(models.userDonor, {
+    Tickets.belongsTo(models.userDonors, {
       foreignKey: {
         allowNull: false
       }

@@ -12,7 +12,7 @@ module.exports = function (passport, signin) {
 
     // used to deserialize the login
     passport.deserializeUser(function (id, done) {
-        db.userRcpt.findById(id).then(function (user) {
+        db.userRcpts.findById(id).then(function (user) {
             if (user) {
                 done(null, user.get());
             } else {
@@ -33,7 +33,7 @@ module.exports = function (passport, signin) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
 
-            db.userRcpt.findOne({
+            db.userRcpts.findOne({
                 where: {
                     email: email
                 }
@@ -55,7 +55,7 @@ module.exports = function (passport, signin) {
                         DOB: req.body.DOB                  
                     };
 
-                    db.userRcpt.create(data).then(function (newUser, created) {
+                    db.userRcpts.create(data).then(function (newUser, created) {
                         if (!newUser) {
                             return done(null, false, {
                                 message: 'an error occured. please try again.'
@@ -91,7 +91,7 @@ module.exports = function (passport, signin) {
                 return bCrypt.compareSync(password, userpass);   
             };
 
-            db.userRcpt.findOne({
+            db.userRcpts.findOne({
                 where: {
                     email: email
                 }
