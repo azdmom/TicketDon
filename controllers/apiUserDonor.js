@@ -15,8 +15,7 @@ module.exports = function(app) {
       street_address: req.body.street_address,
       city: req.body.city,
       state: req.body.state, 
-      zip_code: req.body.zip_code, 
-      phone: req.body.phone
+      zip_code: req.body.zip_code
 
     }).then(function(dbuserDonor) {
 
