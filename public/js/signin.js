@@ -5,6 +5,8 @@ $(function() {
 
     var email = $("#inputEmailApply");
     var pw = $("#inputPasswordApply");
+    var name = $("#inputName");
+    var phone = $("#inputPhone");
     var address = $("#inputAddressApply");
     var city = $("#inputCityApply");
     var state = $("#inputStateApply");
@@ -15,6 +17,8 @@ $(function() {
     var newRecpt = {
       email: email.val().trim(),
       password: pw.val().trim(),
+      name: name.val().trim(),
+      phone: phone.val().trim(),
       street_address: address.val().trim(),
       city: city.val().trim(),
       state: state.val().trim(),
@@ -35,6 +39,8 @@ $(function() {
 
     email.val("");
     pw.val("");
+    name.val("");
+    phone.val("");
     address.val("");
     city.val("");
     state.val("");
@@ -65,6 +71,8 @@ $(function() {
 
     var email = $("#inputEmailDonate");
     var pw = $("#inputPasswordDonate");
+    var name = $("#inputName");
+    var phone = $("#inputPhone");
     var address = $("#inputAddressDonate");
     var city = $("#inputCityDonate");
     var state = $("#inputStateDonate");
@@ -73,6 +81,8 @@ $(function() {
     var newDonor = {
       email: email.val().trim(),
       password: pw.val().trim(),
+      name: name.val().trim(),
+      phone: phone.val().trim(),
       street_address: address.val().trim(),
       city: city.val().trim(),
       state: state.val().trim(),
@@ -91,6 +101,8 @@ $(function() {
 
     email.val("");
     pw.val("");
+    name.val("");
+    phone.val("");
     address.val("");
     city.val("");
     state.val("");
