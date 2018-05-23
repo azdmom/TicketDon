@@ -1,116 +1,120 @@
-   <header>
+<header>
 
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                        aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/" style="color:#7aacff">
-                        <img id="logo" src="img/ticket.png">Ticket Don</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="/about" style="color:#7aacff">About</a>
-                        </li>
-                        <li>
-                            <a href="/" style="width:auto;color:#7aacff">Sign Out</a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-        </nav>
-
-    </header>
-    <main>
-        <!--Bootstrap container-->
+    <nav class="navbar navbar-default">
         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/" style="color:#7aacff">
+                    <img id="logo" src="img/ticket.png">Ticket Don</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/about" style="color:#7aacff">About</a>
+                    </li>
+                    <li>
+                        <a href="/" style="width:auto;color:#7aacff">Sign Out</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
+</header>
+<main>
+    <!--Bootstrap container-->
+    <div class="container">
 
 
-            <div class="row">
+        <div class="row">
 
-                <div class="col-md-12">
+            <div class="col-md-12">
 
-                    <center>
-                        <h2>Events</h2>
-                    </center>
+                <center>
+                    <h2>Events</h2>
+                </center>
 
-                    <br>
+                <br>
 
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Event ID</th>
-                                <th scope="col">Event Name</th>
-                                <th scope="col">Event Address</th>
-                                <th scope="col">Tix Available</th>
-                                <th scope="col">Request Ticket</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="padding: 20px">
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary">Request Ticket</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary">Request Ticket</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>@twitter</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary">Request Ticket</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Event Name:</th>
+                            <th scope="col">Date:</th>
+                            <th scope="col">Location:</th>
+                            <th scope="col">Venue Name:</th>
+                            <th scope="col">Ticket Qty:</th>
+                            <th scope="col">Request Ticket:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                </div>
+                        {{#each tickets}}
+                        <tr style="padding: 20px">
+                            <td class="event_name">{{event_name}}</td>
+                            <td class="date">{{date}}</td>
+                            <td class="location">{{location}}</td>
+                            <td class="venue_name">{{venue_name}}</td>
+                            <td class="ticket_qty">{{ticket_qty}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary request-ticket" data-toggle="modal" data-target="#request_modal">Request Ticket</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+
+{{!-- <!-- Modal -->
+<div class="modal fade" id="request_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <p style="font-size: 20px">Thank you for requesting a ticket. You will be hearing from us shortly!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+
+<footer class="navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+
+            <div class="col-md-6">
+                <p class="footer-copyright">
+                    <strong>&copy; Copyright 2018 Ticket Don</strong>
+                </p>
+            </div>
+
+            <div class="col-md-3">
 
             </div>
         </div>
-
-    </main>
-
-
-    <footer class="navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3">
-                </div>
-
-                <div class="col-md-6">
-                    <p class="footer-copyright">
-                        <strong>&copy; Copyright 2018 Ticket Don</strong>
-                    </p>
-                </div>
-
-                <div class="col-md-3">
-
-                </div>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>

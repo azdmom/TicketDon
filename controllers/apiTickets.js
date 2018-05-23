@@ -42,16 +42,16 @@ module.exports = function(app, passport) {
   }).then(function(dbTickets){
     res.json(dbTickets);
   });
-   });
-   
+})
 
   app.get("/api/getTickets", isLoggedIn, function(req, res) {
     // Add sequelize code to find all posts, and return them to the user with res.json
     //implement find where cluase where rcpt_id is null
-    db.Tickets.findAll({where: {userRcpts: null}
+    db.Tickets.findAll({
+      where: { userRcpts: null }
     }).then(function(data) {
       // We have access to the todos as an argument inside of the callback function
-      console.log(data)
+      console.log(data);
       res.json(data);
     });
   });
@@ -62,18 +62,34 @@ module.exports = function(app, passport) {
     console.log(user)
     res.send(user)
   });
-});
+})
 
-app.get('/logout', function (req, res) {
+  app.get("/events", function(req, res) {
+    // Add sequelize code to find all posts, and return them to the user with res.json
+    //implement find where cluase where rcpt_id is null
+    db.Tickets.findAll({}).then(function(data) {
+      // We have access to the todos as an argument inside of the callback function
+      var tixObject = {
+        tickets: data
+      };
+
+
+      console.log(data);
+      res.render("events", tixObject);
+    });
+  });
+
+
+  app.get('/logout', function (req, res) {
   req.session.destroy(function (err) {
     res.redirect('/');
   });
-});
+  });
 
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated())
-    return next();
-  res.redirect('/');
-}
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    res.redirect('/');
+  }
 
 };
