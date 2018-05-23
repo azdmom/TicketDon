@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       street_address: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
@@ -37,13 +37,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       zip_code: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-      phone: {
-        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           len: [1]

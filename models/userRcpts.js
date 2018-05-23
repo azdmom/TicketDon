@@ -36,21 +36,21 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       zip_code: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       AARP_num: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
       DOB: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
           len: [1]

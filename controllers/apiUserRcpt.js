@@ -7,8 +7,6 @@ module.exports = function(app) {
   // POST route for saving a new event
   app.post("/api/userRcpts", function(req, res) {
 
-    console.log('in the post route');
-    console.log(req.body); 
     // Add sequelize code for creating a post using req.body,
     // then return the result using res.json
 

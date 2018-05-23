@@ -25,7 +25,26 @@ $(function() {
 
     console.log(newRecpt);
 
-    window.location.href = "/recpthome";
+    $.ajax({
+      url: "/api/userRcpts",
+      method: "POST",
+      data: newRecpt
+    }).done(function(response) {
+      console.log(response);
+    });
+
+    email.val("");
+    pw.val("");
+    address.val("");
+    city.val("");
+    state.val("");
+    zip.val("");
+    aarp.val("");
+    dob.val("");
+
+    window.location.href = "/events";
+
+    $("#recpt_details").text("Sign out:" + newRecpt.email);
 
     //create api/signin route
     // $.ajax("/api/userRcpts", {
@@ -39,20 +58,51 @@ $(function() {
     // });
 
     // const userEmail = sessionStorage.getItem("email");
-
-    // Submits a new post and brings user to blog page upon completion
-
-    function submitRecpt(newRecpt) {
-      $.post("/api/userRcpts", newRecpt, function() {
-        window.location.href = "/recpthome";
-      });
-    }
-
-
   });
 
   $(".signupbtnDonate").on("click", function(event) {
     event.preventDefault();
-    window.location.href = "/donorhome";
+
+    var email = $("#inputEmailDonate");
+    var pw = $("#inputPasswordDonate");
+    var address = $("#inputAddressDonate");
+    var city = $("#inputCityDonate");
+    var state = $("#inputStateDonate");
+    var zip = $("#inputZipDonate");
+
+    var newDonor = {
+      email: email.val().trim(),
+      password: pw.val().trim(),
+      street_address: address.val().trim(),
+      city: city.val().trim(),
+      state: state.val().trim(),
+      zip_code: zip.val().trim()
+    };
+
+    console.log(newDonor);
+
+    $.ajax({
+      url: "/api/userDonor",
+      method: "POST",
+      data: newDonor
+    }).done(function(response) {
+      console.log(response);
+    });
+
+    email.val("");
+    pw.val("");
+    address.val("");
+    city.val("");
+    state.val("");
+    zip.val("");
+
+
+
+
+    window.location.href = "/newEvents";
+
+    $("#donor_details").text("Sign out:" +newRecpt.email);
+
+
   });
 });
