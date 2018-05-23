@@ -18,9 +18,9 @@ module.exports = function(app) {
       zip_code: req.body.zip_code, 
       phone: req.body.phone
 
-    }).then(function(dbPost) {
+    }).then(function(dbuserDonor) {
 
-      res.json(dbPost);
+      res.json(dbUserDonor);
       
     });
 

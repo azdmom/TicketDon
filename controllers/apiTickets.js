@@ -27,8 +27,8 @@ module.exports = function(app) {
           information: req.body.information,
           ticket_barcode: req.body.ticket_barcode,
           ticketScan: req.body.information
-        }).then(function(dbPost) {
-          res.json(dbPost);
+        }).then(function(dbTickets) {
+          res.json(dbTickets);
         });
       });
   });

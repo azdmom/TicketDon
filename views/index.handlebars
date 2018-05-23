@@ -20,20 +20,25 @@
                         <a href="/about" style="color:#7aacff">About</a>
                     </li>
                     <li>
-                        <a onclick="document.getElementById('login').style.display='block'" style="width:auto;color:#7aacff">
-                            <span class="glyphicon glyphicon-log-in"></span> Log-In</a>
+                        <a onclick="document.getElementById('donor-login').style.display='block'" style="width:auto;color:#7aacff">
+                            <span class="glyphicon glyphicon-log-in"></span>Donor Log In</a>
+                    </li>
+                    <li>
+                        <a onclick="document.getElementById('rcpt-login').style.display='block'" style="width:auto;color:#7aacff">
+                            <span class="glyphicon glyphicon-log-in"></span>Recipient Log In</a>
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-        <div id="login" class="module">
+        <div id="donor-login" class="module">
             <form class="module-content animate">
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close module">&times;</span>
+                    <span onclick="document.getElementById('donor-login').style.display='none'" class="close" title="Close module">&times;</span>
                 </div>
                 <div class="container">
+                     <div class="col-lg-10">
                     <label for="uname">
                         <b>Email</b>
                     </label>
@@ -43,22 +48,39 @@
                     </label>
                     <input type="password" placeholder="Enter Password" name="psw" required>
                     <div class="row">
-                        <div class="col-lg-6">
                             <button type="submit">Login</button>
-                        </div>
-                        <div class="col-lg-6">
                             <button type="button" onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
-                        </div>
                     </div>
                     <label>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                     </label>
                 </div>
-                <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
-                    <span class="psw">Forgot
-                        <a href="#">password?</a>
-                    </span>
+                </div>
+            </form>
+        </div>
+        <div id="rcpt-login" class="module">
+            <form class="module-content animate">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('rcpt-login').style.display='none'" class="close" title="Close module">&times;</span>
+                </div>
+                <div class="container">
+                     <div class="col-lg-10">
+                    <label for="uname">
+                        <b>Email</b>
+                    </label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <label for="psw">
+                        <b>Password</b>
+                    </label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                    <div class="row">
+                            <button type="submit">Login</button>
+                            <button type="button" onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
+                    </div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                </div>
                 </div>
             </form>
         </div>

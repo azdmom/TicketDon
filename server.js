@@ -39,7 +39,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //load passport strategy
-require('./controllers/passport.js')(passport, db.members);
+require('./controllers/passportD.js')(passport, db.userDonor);
+require('./controllers/passportR.js')(passport, db.userRcpts);
 
 // what is going on with passport
 app.use((req, res, next) => {
@@ -55,7 +56,7 @@ app.post("/mailer", function(req, res){
   var body = req.body
     console.log(body)
 
-    let transporter = nodemailer.createTransport(smtpTransport({
+    var transporter = nodemailer.createTransport(smtpTransport({
       service: 'gmail',
       secure: false,
       port: 25,
@@ -68,7 +69,7 @@ app.post("/mailer", function(req, res){
       },
     }))
 
-    let rcptLost = {
+    var rcptLost = {
       from: '"Message from TicketDon" ticketDon2018@gmail.com',
       to: body.email,
       subject: 'New message',
@@ -82,7 +83,7 @@ app.post("/mailer", function(req, res){
       console.log(info);
     })
 
-    let rcptWon = {
+    var rcptWon = {
       from: '"Message from TicketDon" ticketDon2018@gmail.com',
       to: body.email,
       subject: 'New message',
