@@ -25,7 +25,7 @@ $(function() {
 
     console.log(newRecpt);
 
-    // window.location.href = "/recpthome";
+    window.location.href = "/recpthome";
 
     //create api/signin route
     // $.ajax("/api/userRcpts", {
@@ -52,6 +52,7 @@ $(function() {
   });
 
   $(".signupbtnDonate").on("click", function(event) {
+    event.preventDefault();
     window.location.href = "/donorhome";
   });
 });

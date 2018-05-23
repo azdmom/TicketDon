@@ -22,9 +22,9 @@ module.exports = function(app) {
       AARP_num: req.body.AARP_num,
       DOB: req.body.DOB
 
-    }).then(function(dbPost) {
+    }).then(function(dbuserRcpt) {
 
-      res.json(dbPost);
+      res.json(dbuserRcpt);
     });
     
 
