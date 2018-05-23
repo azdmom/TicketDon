@@ -186,4 +186,60 @@ $(document).ready(function () {
             }
         );
     });
+
+
+    // $(".submitNewEvent").on("click", function(event) {
+    //     event.preventDefault();
+    
+    //     var event_name = $("#eventNameNE");
+    //     var location = $("#inputLocationNE");
+    //     var venue = $("#inputVenueNE");
+    //     var date = $("#inputDateNE");
+    //     var ticket_number = $("#ticketCountNE");
+
+
+    //     var newEvent = {
+    //       event_name: email.val().trim(),
+    //       ticket_qty: pw.val().trim(),
+    //       venue_name: name.val().trim(),
+    //       phone: phone.val().trim(),
+    //       street_address: address.val().trim(),
+    //       city: city.val().trim(),
+    //       state: state.val().trim(),
+    //       zip_code: zip.val().trim()
+    //     };
+    
+    //     console.log(newDonor);
+    
+    //     $.ajax({
+    //       url: "/api/userDonor",
+    //       method: "POST",
+    //       data: newDonor
+    //     }).done(function(response) {
+    //       console.log(response);
+    //     });
+    
+    //     email.val("");
+    //     pw.val("");
+    //     name.val("");
+    //     phone.val("");
+    //     address.val("");
+    //     city.val("");
+    //     state.val("");
+    //     zip.val("");
+    
+    
+    
+    
+    //     window.location.href = "/newEvents";
+    
+    //     $("#donor_details").text("Sign out:" +newRecpt.email);
+    
+    
+    //   });
+
+
+
+
+
 });
