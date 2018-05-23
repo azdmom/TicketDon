@@ -11,8 +11,6 @@ var transporter = nodemailer.createTransport({
        debug: true // include SMTP traffic in the logs
    });
 
-   var recptEmails = [];
-
    const mailOptions = {
     from: 'ticketDon2018@gmail.com', // sender address
     to: recptEmails, // list of receivers

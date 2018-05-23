@@ -36,11 +36,29 @@ module.exports = function(app) {
   app.get("/api/Tickets", function(req, res) {
     // Add sequelize code to find all posts, and return them to the user with res.json
     //implement find where cluase where rcpt_id is null
-    db.Tickets.findAll({}).then(function(dbPost) {
+    db.Tickets.findAll({}).then(function(data) {
       // We have access to the todos as an argument inside of the callback function
-      res.json(dbPost);
+      console.log(data)
+      res.json("data");
     });
   });
+
+  // app.get("/api/userTicket", function(req,res){
+  //   var user = {
+  //     email: "ddogjani@gmail.com",
+  //     name: "drita",
+  //     favColor: "blue"
+  //   }
+  //   var availableTickets = [
+
+  //   ]
+  //   for loop ( if tickets where recpt_is !== null){
+    
+  //   }
+  //   res.send(user)
+  // })
+
+   
 
   app.delete("/api/tickets/:id", function(req, res) {
     db.Tickets.findOne({
@@ -60,4 +78,3 @@ module.exports = function(app) {
   });
 };
 
-//

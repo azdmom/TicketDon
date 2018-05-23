@@ -79,7 +79,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Tickets.associate = function(models){
-    Tickets.belongsTo(models.userRcpts);
+    Tickets.belongsTo(models.userRcpts, {
+      foreignKey: {
+        allowNull: true
+      }
+    });
     Tickets.belongsTo(models.userDonor, {
       foreignKey: {
         allowNull: false

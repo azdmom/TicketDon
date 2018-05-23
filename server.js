@@ -30,7 +30,55 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // nodemailer
-// var nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport')
+
+app.post("/mailer", function(req, res){
+  var body = req.body
+    console.log(body)
+
+    let transporter = nodemailer.createTransport(smtpTransport({
+      service: 'gmail',
+      secure: false,
+      port: 25,
+      auth: {
+        user: 'ticketDon2018@gmail.com',
+        pass: 'Penncode12'
+      },
+      tls: {
+        rejectUnauthorized: false
+      },
+    }))
+
+    let rcptLost = {
+      from: '"Message from TicketDon" ticketDon2018@gmail.com',
+      to: body.email,
+      subject: 'New message',
+      text: "<p><b>Congratulations!</b> You have won the ticket you requested via TicketDon!</p> + <p>Further information will be sent shortly by express mail.</p>"}
+
+    transporter.sendMail(rcptLost, (error, info) => {
+      if (error){
+      return res.json({error: error})
+      }
+     // res.json({info: "this message was sent successfully"})
+      console.log(info);
+    })
+
+    let rcptWon = {
+      from: '"Message from TicketDon" ticketDon2018@gmail.com',
+      to: body.email,
+      subject: 'New message',
+      text: "you lost"}
+
+    transporter.sendMail(rcptWon, (error, info) => {
+      if (error){
+      return res.json({error: error})
+      }
+      res.json({info: "this message was sent successfully"})
+      console.log(info);
+    })
+
+})
 
 // Routes
 // =============================================================
