@@ -101,9 +101,9 @@ app.post("/mailer", function(req, res){
 
 // Routes
 // =============================================================
-require("./controllers/apiTickets.js")(app);
-require("./controllers/apiUserDonor.js")(app);
-require("./controllers/apiUserRcpt.js")(app);
+require("./controllers/apiTickets.js")(app, passport);
+require("./controllers/apiUserDonor.js")(app, passport);
+require("./controllers/apiUserRcpt.js")(app, passport);
 require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app

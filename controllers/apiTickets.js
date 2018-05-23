@@ -1,12 +1,13 @@
+var path = require("path");
 var express = require("express");
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
   // POST route for saving a new event
-  app.post("/api/Tickets", function(req, res) {
+  app.post("/api/Tickets", isLoggedIn, function(req, res) {
     // Add sequelize code for creating a post using req.body,
     // then return the result using res.json
-
+    
     db.userDonors
       .findOne({
         where: {
@@ -33,20 +34,17 @@ module.exports = function(app) {
       });
   });
 
-  app.put("api/ticketRqst", function(req, res) {
-    db.Tickets.update(
-      {
-        userRcpts: user.id
-      },
-      {
-        where: { email: req.body.email }
-      }
-    ).then(function(dbTickets) {
-      res.json(dbTickets);
-    });
+  app.put("api/ticketRqst", isLoggedIn, function(req, res){
+    db.Tickets.update({
+    userRcpts: user.id
+  }, {
+    where: { email: req.body.email }
+  }).then(function(dbTickets){
+    res.json(dbTickets);
   });
+})
 
-  app.get("/api/Tickets", function(req, res) {
+  app.get("/api/getTickets", isLoggedIn, function(req, res) {
     // Add sequelize code to find all posts, and return them to the user with res.json
     //implement find where cluase where rcpt_id is null
     db.Tickets.findAll({
@@ -58,14 +56,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/ticketEmail", function(req, res) {
-    db.Tickets.findAll({
-      where: { [userRcpts.ne]: null }
-    }).then(function(user) {
-      console.log(user);
-      res.send(user);
-    });
+  app.get("/api/ticketEmail", isLoggedIn, function(req,res){
+  db.Tickets.findAll({where: {[userRcpts.ne]: null}
+  }).then(function(user){
+    console.log(user)
+    res.send(user)
   });
+})
 
   app.get("/events", function(req, res) {
     // Add sequelize code to find all posts, and return them to the user with res.json
@@ -81,4 +78,18 @@ module.exports = function(app) {
       res.render("events", tixObject);
     });
   });
+
+
+  app.get('/logout', function (req, res) {
+  req.session.destroy(function (err) {
+    res.redirect('/');
+  });
+  });
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    res.redirect('/');
+  }
+
 };

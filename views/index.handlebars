@@ -38,22 +38,22 @@
                     <span onclick="document.getElementById('donor-login').style.display='none'" class="close" title="Close module">&times;</span>
                 </div>
                 <div class="container">
-                     <div class="col-lg-10">
-                    <label for="donorEmail">
-                        <b>Email</b>
-                    </label>
-                    <input type="text" id="donorEmail" placeholder="Enter Email" name="donorEmail" required>
-                    <label for="psw">
-                        <b>Password</b>
-                    </label>
-                    <input type="password" id="donorPw" placeholder="Enter Password" name="psw" required>
-                    <div class="row">
+                    <div class="col-lg-10">
+                        <label id="donorEmail" for="donorEmail">
+                            <b>Email</b>
+                        </label>
+                        <input type="text" id="donorEmail" placeholder="Enter Email" name="donorEmail" required>
+                        <label id="donorPw" for="psw">
+                            <b>Password</b>
+                        </label>
+                        <input type="password" id="donorPw" placeholder="Enter Password" name="psw" required>
+                        <div class="row">
                             <button id="donor-login" type="submit">Login</button>
+                        </div>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
                     </div>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
                 </div>
             </form>
         </div>
@@ -63,22 +63,22 @@
                     <span onclick="document.getElementById('rcpt-login').style.display='none'" class="close" title="Close module">&times;</span>
                 </div>
                 <div class="container">
-                     <div class="col-lg-10">
-                    <label for="rcptEmail">
-                        <b>Email</b>
-                    </label>
-                    <input type="text" id="rcptEmail" placeholder="Enter Username" name="rcptEmail" required>
-                    <label for="psw">
-                        <b>Password</b>
-                    </label>
-                    <input type="password" id="rcptPw" placeholder="Enter Password" name="psw" required>
-                    <div class="row">
+                    <div class="col-lg-10">
+                        <label id="rcptEmail" for="rcptEmail">
+                            <b>Email</b>
+                        </label>
+                        <input type="text" id="rcptEmail" placeholder="Enter Username" name="rcptEmail" required>
+                        <label id="rcptPw" for="psw">
+                            <b>Password</b>
+                        </label>
+                        <input type="password" id="rcptPw" placeholder="Enter Password" name="psw" required>
+                        <div class="row">
                             <button id="rcpt-login" type="submit">Login</button>
+                        </div>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
                     </div>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                </div>
                 </div>
             </form>
         </div>
@@ -92,8 +92,8 @@
             <center>
                 <h1>Welcome to Ticket Donate!</h1>
             </center>
-            <p>Ticket Donate allows elderly individuals who may not be able to afford tickets to various events to connect with
-                others who have extra tickets and are willing to donate them to help the community.</p>
+            <p>TicketDon allows elderly individuals who may not be able to afford tickets to various events by connecting with
+                donors who have extra tickets and are willing to donate them to help the community.</p>
             <center>
                 <div class="row">
                     <div class="col-md-4">
@@ -184,17 +184,18 @@
     </div>
 </footer>
 
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 
 
 <script>
-        $("#donor-login").on("submit", function (event) {
-        
+
+$(document).ready(function () {    
+    $("#donor-login").on("submit", function (event) {
+
         var $this = $(this);
         $this.find('.message:first').text('');
-        
+
         event.preventDefault();
         if ($.trim($("#donorEmail").val()) === "" || $.trim($("#donorEmail").val()) === "jDoe@email.com" || $.trim($("#donorEmail").val()) === "Please enter a valid e-mail Address") {
             $("#donorEmail").val(" Please enter your e-mail Address");
@@ -217,9 +218,45 @@
             function (response) {
                 window.location.href = response.redirectTo;
             },
-            function(error) {
+            function (error) {
                 $this.find('.message:first').text('Username and/or password incorrect');
             }
         );
     });
+}
+
+$(document).ready(function () {    
+    $("#rcpt-login").on("submit", function (event) {
+
+        var $this = $(this);
+        $this.find('.message:first').text('');
+
+        event.preventDefault();
+        if ($.trim($("#rcptEmail").val()) === "" || $.trim($("#rcptEmail").val()) === "jDoe@email.com" || $.trim($("#rcptEmail").val()) === "Please enter a valid e-mail Address") {
+            $("#rcpEmail").val(" Please enter your e-mail Address");
+            return false;
+        }
+        if ($.trim($("#rcptPw").val()) === "" || $.trim($("#rcptPw").val()) === "Password" || $.trim($("#rcptPw").val()) === "Please enter a Password") {
+            $("#rcptPw").val(" Please enter a Password");
+            return false;
+        }
+        var signin = {
+            password: $("#rcptPw").val().trim(),
+            email: $("#rcptEmail").val().trim(),
+        }
+
+        // Send the POST request.
+        $.ajax("/api/rcptSignin", {
+            type: "POST",
+            data: signin
+        }).then(
+            function (response) {
+                window.location.href = response.redirectTo;
+            },
+            function (error) {
+                $this.find('.message:first').text('Username and/or password incorrect');
+            }
+        );
+    });
+}
 </script>
