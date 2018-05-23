@@ -33,38 +33,34 @@ module.exports = function(app) {
       });
   });
 
+  app.put("api/ticketRqst", function(req, res){
+    db.Tickets.update({
+    userRcpts: user.id
+  }, {
+    where: { email: req.body.email }
+  }).then(function(dbTickets){
+    res.json(dbTickets);
+  });
+   });
+   
+
   app.get("/api/Tickets", function(req, res) {
     // Add sequelize code to find all posts, and return them to the user with res.json
     //implement find where cluase where rcpt_id is null
-    db.Tickets.findAll({}).then(function(data) {
+    db.Tickets.findAll({where: {userRcpts: null}
+    }).then(function(data) {
       // We have access to the todos as an argument inside of the callback function
       console.log(data)
-      res.json("data");
+      res.json(data);
     });
   });
 
-  app.get("/api/userTicket", function(req,res){
+  app.get("/api/ticketEmail", function(req,res){
   db.Tickets.findAll({where: {[userRcpts.ne]: null}
   }).then(function(user){
+    console.log(user)
     res.send(user)
-  })
-   
-
-  app.delete("/api/tickets/:id", function(req, res) {
-    db.Tickets.findOne({
-      where: {
-        id: id
-      }
-    }).then(function(data) {
-      if (data.ticket_qty === 1) {
-        db.tickets.destroy({ where: { id: id } });
-      } else {
-        db.tickets.update(
-          { where: { id: req.params.id } },
-          { ticket_qty: data.ticket_qty - req.body.qty }
-        );
-      }
-    });
   });
 });
-}
+
+};

@@ -12,6 +12,8 @@ module.exports = function(app) {
     db.userDonors.create({
       email: req.body.email,
       password: req.body.password,
+      name: req.body.name,
+      phone: req.body.phone,
       street_address: req.body.street_address,
       city: req.body.city,
       state: req.body.state, 
@@ -19,7 +21,7 @@ module.exports = function(app) {
 
     }).then(function(dbuserDonors) {
 
-      res.json(dbUserDonors);
+      res.json(dbuserDonors);
       
     });
 
