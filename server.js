@@ -38,8 +38,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-//load passport strategy
-require('./controllers/passport.js')(passport, db.members);
+
 
 // what is going on with passport
 app.use((req, res, next) => {
