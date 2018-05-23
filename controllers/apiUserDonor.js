@@ -11,7 +11,7 @@ module.exports = function(app, passport) {
   }),
   (req, res, next) => {
     res.status(200).send({
-      redirectTo: "/api/Tickets"
+      redirectTo: "/newEvents"
     });
   },
   (err, req, res, next) => {
@@ -51,7 +51,7 @@ module.exports = function(app, passport) {
   }),
   (req, res, next) => {
     res.status(200).send({
-      redirectTo: "/api/Tickets"
+      redirectTo: "/newEvents"
     });
   },
   (err, req, res, next) => {

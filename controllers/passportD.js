@@ -23,8 +23,8 @@ module.exports = function (passport, signin) {
 
     // create new member
     passport.use('donor-login', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
+        usernameField: 'donorEmail',
+        passwordField: 'donorPw',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
 
@@ -80,8 +80,8 @@ module.exports = function (passport, signin) {
     //LOCAL SIGNIN
     passport.use('donor-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField: 'email',
-        passwordField: 'password',
+        usernameField: 'donorEmail',
+        passwordField: 'donorPw',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, email, password, done) {
@@ -92,7 +92,7 @@ module.exports = function (passport, signin) {
 
             db.userDonors.findOne({
                 where: {
-                    email: email
+                    donorEmail: donorEmail
                 }
             }).then(function (signin) {
                 if (!signin) {
