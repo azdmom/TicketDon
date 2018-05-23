@@ -6,7 +6,8 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var passport = require('passport');
+var session = require('express-session');
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -14,6 +15,14 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
+
+app.use(session({
+  secret: 'ninety tuba spike',
+  resave: true,
+  saveUninitialized: true
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +37,15 @@ var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+//load passport strategy
+require('./controllers/passport.js')(passport, db.members);
+
+// what is going on with passport
+app.use((req, res, next) => {
+    console.log(req.body);
+    next();
+});
 
 // nodemailer
 var nodemailer = require('nodemailer');
@@ -89,8 +107,17 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function () {
+  console.log('database sync okay');
+  app.listen(PORT, function (err) {
+      if (!err) {
+          // Log (server-side) when our server has started
+          console.log("Server listening on: http://localhost:" + PORT);
+      }
+      else {
+          console.log(err);
+      }
   });
+}).catch(function (err) {
+  console.log(err, "database synch failed");
 });

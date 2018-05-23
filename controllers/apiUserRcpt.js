@@ -6,6 +6,9 @@ module.exports = function(app) {
 
   // POST route for saving a new event
   app.post("/api/userRcpts", function(req, res) {
+
+    console.log('in the post route');
+    console.log(req.body); 
     // Add sequelize code for creating a post using req.body,
     // then return the result using res.json
 
@@ -16,27 +19,15 @@ module.exports = function(app) {
       city: req.body.city,
       state: req.body.state, 
       zip_code: req.body.zip_code, 
-      phone: req.body.phone,
       AARP_num: req.body.AARP_num,
       DOB: req.body.DOB
 
-    }).then(function(dbPost) {
+    }).then(function(dbuserRcpt) {
 
-      res.json(dbPost);
+      res.json(dbuserRcpt);
     });
     
-    //create api signin route
-    $.ajax('/api/signin', {
-      method:'POST',
-      data: {
-        email: email,
-        password: password
-      }
-    }).then(function(response) {
-      sessionStorage.setItem('email', response.email);
-    })
-  
-    const userEmail = sessionStorage.getItem('email');
+
   });
   
 
