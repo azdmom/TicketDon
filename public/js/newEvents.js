@@ -3,59 +3,115 @@
 $(document).ready(function () {
     console.log("newEvents is ready!");
 
-    $("#newOpportunityForm").on("submit", function (event) {
-        event.preventDefault();
-  
-        var $this = $(this);
-        $this.find('.message:first').text('');
-  
-        if ($.trim($("#eventName").val()) === "" || $.trim($("#eventName").val()) === "Event Name" || $.trim($("#eventName").val()) === "Please enter your Event Name") {
-            $("#eventName").val(" Please enter your Event Name");
-            return false;
-        }
-        if ($.trim($("#inputLocation").val()) === "" || $.trim($("#inputLocation").val()) === "Location" || $.trim($("#about Location").val()) === "Please enter information your Location.") {
-            $("#inputLocation").val(" Please enter your event's Location");
-            return false;
-        }
-        if ($.trim($("#inputVenue").val()) === "" || $.trim($("#inputVenue").val()) === "Venue Name" || $.trim($("#inputVenue").val()) === "Please enter your Event Name") {
-            $("#inputVenue").val(" Please enter your Venue Name");
-            return false;
-        }
-        if ($.trim($("#inputDate").val()) === "" || $.trim($("#inputDate").val()) === "MM/DD/YYYY" || $.trim($("#inputDate").val()) === "Please enter a valid Date") {
-            $("#inputDate").val(" Please enter a valid Date");
-            return false;;
-        }
-        if ($.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "Please enter your tickets available") {
-            $("#ticketCount").val(" Please enter your available tickets");
-            return false;
-        }
-        var newEvents = {
-            event_name: $("#eventName").val().trim(),
-            location_name: $("#inputLocation").val().trim(),
-            venue_name: $("#inputVenue").val().trim(),
-            date: $("#inputDate").val().trim(),
-            ticket_number: $("#ticketCount").val().trim(),
-        };
-  
-        console.log(newEvents)
-  
-        // Send the POST request.
-        $.ajax("/api/newEvents", {
-            type: "POST",
-            data: newEvents
-        }).then(
-            function (response) {
-                window.location.href = response.redirectTo;
-            },
-            function(error) {
-                console.log(error);
-                $this.find('.message:first').text('An error occured.  Please try again');
-            }
-        );
-    });
-  });
 
-// // Modal for Submit button
+
+    $(".submitNewEvent").on("click", function(event) {
+        event.preventDefault();
+    
+        var event_name = $("#eventNameNE");
+        var date = $("#inputDateNE");
+        var location = $("#inputLocationNE");
+        var venue_name = $("#inputVenueNE");
+        var ticket_qty = $("#ticketCountNE");
+
+        var email = $("#inputEmail");
+
+
+
+        var newEvent = {
+          event_name: event_name.val().trim(),
+          date: date.val().trim(),
+          location: location.val().trim(),
+          venue_name: venue_name.val().trim(),
+          ticket_qty: ticket_qty.val().trim()
+        };
+    
+        console.log(newEvent);
+    
+        $.ajax({
+          url: "/api/Events",
+          method: "POST",
+          data: newEvent
+        }).done(function(response) {
+          console.log(response);
+        });
+    
+        event_name.val("");
+        date.val("");
+        location.val("");
+        venue_name.val("");
+        ticket_qty.val("");
+        email.val("");
+    
+    
+        // window.location.href = "/newEvents";
+    
+    
+      });
+
+
+
+
+
+//     $("#newOpportunityForm").on("submit", function (event) {
+//         event.preventDefault();
+  
+//         var $this = $(this);
+//         $this.find('.message:first').text('');
+  
+//         if ($.trim($("#eventName").val()) === "" || $.trim($("#eventName").val()) === "Event Name" || $.trim($("#eventName").val()) === "Please enter your Event Name") {
+//             $("#eventName").val(" Please enter your Event Name");
+//             return false;
+//         }
+//         if ($.trim($("#inputLocation").val()) === "" || $.trim($("#inputLocation").val()) === "Location" || $.trim($("#about Location").val()) === "Please enter information your Location.") {
+//             $("#inputLocation").val(" Please enter your event's Location");
+//             return false;
+//         }
+//         if ($.trim($("#inputVenue").val()) === "" || $.trim($("#inputVenue").val()) === "Venue Name" || $.trim($("#inputVenue").val()) === "Please enter your Event Name") {
+//             $("#inputVenue").val(" Please enter your Venue Name");
+//             return false;
+//         }
+//         if ($.trim($("#inputDate").val()) === "" || $.trim($("#inputDate").val()) === "MM/DD/YYYY" || $.trim($("#inputDate").val()) === "Please enter a valid Date") {
+//             $("#inputDate").val(" Please enter a valid Date");
+//             return false;;
+//         }
+//         if ($.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "Please enter your tickets available") {
+//             $("#ticketCount").val(" Please enter your available tickets");
+//             return false;
+//         }
+//         var newEvents = {
+//             event_name: $("#eventName").val().trim(),
+//             location_name: $("#inputLocation").val().trim(),
+//             venue_name: $("#inputVenue").val().trim(),
+//             date: $("#inputDate").val().trim(),
+//             ticket_number: $("#ticketCount").val().trim(),
+//         };
+  
+//         console.log(newEvents)
+  
+//         // Send the POST request.
+//         $.ajax("/api/newEvents", {
+//             type: "POST",
+//             data: newEvents
+//         }).then(
+//             function (response) {
+//                 window.location.href = response.redirectTo;
+//             },
+//             function(error) {
+//                 console.log(error);
+//                 $this.find('.message:first').text('An error occured.  Please try again');
+//             }
+//         );
+//     });
+//   });
+
+
+
+
+
+
+
+//  Modal for Submit button ===============
 //   $('#myform').on('submit', function(ev) {
 //     $('#myModal').modal('show'); 
 
@@ -69,15 +125,23 @@ $(document).ready(function () {
 
 //     ev.preventDefault();
 // });
-// TICKETMASTER API AND AJAX CALL =========================
+
+
+
+
+
+
+
+
+//============== TICKETMASTER API AND AJAX CALL =========================
 
 var searchCounter = 0;
 var queryTerm = "";
 var queryURLBase = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=NdH7ttoqHEznKuGMVdBINJqbG8r9w1Kk&keyword=";
 
-// Submit Form
 
-$(document).ready(function () {
+//Search form is submitted and goes to the Ticketmaster API
+
     $("#search-events-btn").on("click", function (event) {
         event.preventDefault();
 
@@ -135,109 +199,6 @@ $(document).ready(function () {
             })
         })
     });
-
-    $("#newOpportunityForm").on("submit", function (event) {
-        event.preventDefault();
-
-        var $this = $(this);
-        $this.find('.message:first').text('');
-
-        if ($.trim($("#eventName").val()) === "" || $.trim($("#eventName").val()) === "Event Name" || $.trim($("#eventName").val()) === "Please enter your Event Name") {
-            $("#eventName").val(" Please enter your Event Name");
-            return false;
-        }
-        if ($.trim($("#inputLocation").val()) === "" || $.trim($("#inputLocation").val()) === "Location" || $.trim($("#about Location").val()) === "Please enter information your Location.") {
-            $("#inputLocation").val(" Please enter your event's Location");
-            return false;
-        }
-        if ($.trim($("#inputVenue").val()) === "" || $.trim($("#inputVenue").val()) === "Venue Name" || $.trim($("#inputVenue").val()) === "Please enter your Event Name") {
-            $("#inputVenue").val(" Please enter your Venue Name");
-            return false;
-        }
-        if ($.trim($("#inputDate").val()) === "" || $.trim($("#inputDate").val()) === "MM/DD/YYYY" || $.trim($("#inputDate").val()) === "Please enter a valid Date") {
-            $("#inputDate").val(" Please enter a valid Date");
-            return false;;
-        }
-        if ($.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "" || $.trim($("#ticketCount").val()) === "Please enter your tickets available") {
-            $("#ticketCount").val(" Please enter your available tickets");
-            return false;
-        }
-        var newEvents = {
-            event_name: $("#eventName").val().trim(),
-            location_name: $("#inputLocation").val().trim(),
-            venue_name: $("#inputVenue").val().trim(),
-            date: $("#inputDate").val().trim(),
-            ticket_number: $("#ticketCount").val().trim(),
-        };
-
-        console.log(newEvents)
-
-        // Send the POST request.
-        $.ajax("/api/newEvents", {
-            type: "POST",
-            data: newEvents
-        }).then(
-            function (response) {
-                window.location.href = response.redirectTo;
-            },
-            function (error) {
-                console.log(error);
-                $this.find('.message:first').text('An error occured.  Please try again');
-            }
-        );
-    });
-
-
-    // $(".submitNewEvent").on("click", function(event) {
-    //     event.preventDefault();
-    
-    //     var event_name = $("#eventNameNE");
-    //     var location = $("#inputLocationNE");
-    //     var venue = $("#inputVenueNE");
-    //     var date = $("#inputDateNE");
-    //     var ticket_number = $("#ticketCountNE");
-
-
-    //     var newEvent = {
-    //       event_name: email.val().trim(),
-    //       ticket_qty: pw.val().trim(),
-    //       venue_name: name.val().trim(),
-    //       phone: phone.val().trim(),
-    //       street_address: address.val().trim(),
-    //       city: city.val().trim(),
-    //       state: state.val().trim(),
-    //       zip_code: zip.val().trim()
-    //     };
-    
-    //     console.log(newDonor);
-    
-    //     $.ajax({
-    //       url: "/api/userDonor",
-    //       method: "POST",
-    //       data: newDonor
-    //     }).done(function(response) {
-    //       console.log(response);
-    //     });
-    
-    //     email.val("");
-    //     pw.val("");
-    //     name.val("");
-    //     phone.val("");
-    //     address.val("");
-    //     city.val("");
-    //     state.val("");
-    //     zip.val("");
-    
-    
-    
-    
-    //     window.location.href = "/newEvents";
-    
-    //     $("#donor_details").text("Sign out:" +newRecpt.email);
-    
-    
-    //   });
-
 
 
 
