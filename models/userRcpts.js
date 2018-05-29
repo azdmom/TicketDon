@@ -1,3 +1,4 @@
+//Uses sequelize to set up a Recipients table within the DB, which will store all the registered Recipients.
 module.exports = function(sequelize, DataTypes) {
     var userRcpts = sequelize.define("userRcpts", {
       email: {

@@ -1,23 +1,15 @@
+//Requires necessary dependencies & DB models.
 var path = require("path");
 var express = require("express");
 var db = require("../models");
 
 module.exports = function(app) {
+
+  //POST route for creating a new event.
   app.post("/api/Events", function(req, res) {
 
 
-    // db.userDonors
-    //   .findOne({
-    //     where: {
-    //       email: req.body.email
-    //     }
-    //   })
-    //   .then(function(donor) {
-    //       console.log(donor.id);
-    //   });
-
-
-
+    //Sequelize code that creates a new event record in the DB based on what was submitted by the New Events form.
     db.Tickets
       .create({
         event_name: req.body.event_name,
@@ -101,16 +93,17 @@ module.exports = function(app) {
 
 
   //Populates the events table on the Events page with all of the events in the DB
-
   app.get("/events", function(req, res) {
-    // Add sequelize code to find all posts, and return them to the user with res.json
+
+    //Sequelize code that finds all events, and returns them to the user with res.json
     db.Tickets.findAll({}).then(function(data) {
-      // We have access to the todos as an argument inside of the callback function
+
+      //Sets up an object that stores all the results of the findAll query
       var tixObject = {
         tickets: data
       };
 
-      console.log(data);
+      //Sends the above object to a handlebars page
       res.render("events", tixObject);
     });
   });

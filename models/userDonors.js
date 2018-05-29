@@ -1,3 +1,4 @@
+//Uses sequelize to set up a Donors table within the DB, which will store all the registered Donors.
 module.exports = function(sequelize, DataTypes) {
     var userDonors = sequelize.define("userDonors", {
       email: {

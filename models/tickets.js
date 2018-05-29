@@ -1,3 +1,4 @@
+//Uses sequelize to set up a Tickets table within the DB, which will store the submitted Events.
 module.exports = function(sequelize, DataTypes) {
   var Tickets = sequelize.define("Tickets", {
     event_name: {

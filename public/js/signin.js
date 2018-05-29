@@ -1,8 +1,10 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
+  //When the Sign Up button is clicked on the Apply form...
   $(".signupbtnApply").on("click", function(event) {
     event.preventDefault();
 
+    //Get the text entered into each of the fields on the form
     var email = $("#inputEmailApply");
     var pw = $("#inputPasswordApply");
     var name = $("#inputName");
@@ -14,6 +16,7 @@ $(function() {
     var aarp = $("#inputAARPApply");
     var dob = $("#inputDOBApply");
 
+    //Make an object that stores the values of each of the above inputs
     var newRecpt = {
       email: email.val().trim(),
       password: pw.val().trim(),
@@ -29,6 +32,7 @@ $(function() {
 
     console.log(newRecpt);
 
+    //Send a POST request to the controller that contains the new Recipient data
     $.ajax({
       url: "/api/userRcpts",
       method: "POST",
@@ -37,6 +41,7 @@ $(function() {
       console.log(response);
     });
 
+    //Clear out the fields on the form
     email.val("");
     pw.val("");
     name.val("");
@@ -48,9 +53,8 @@ $(function() {
     aarp.val("");
     dob.val("");
 
+    //Redirect user to the Events page
     window.location.href = "/events";
-
-    $("#recpt_details").text("Sign out:" + newRecpt.email);
 
     //create api/signin route
     // $.ajax("/api/userRcpts", {
@@ -66,9 +70,11 @@ $(function() {
     // const userEmail = sessionStorage.getItem("email");
   });
 
+  //When the Sign Up button is clicked on the Donate form...
   $(".signupbtnDonate").on("click", function(event) {
     event.preventDefault();
 
+    //Get the text entered into each of the fields on the form
     var email = $("#inputEmailDonate");
     var pw = $("#inputPasswordDonate");
     var name = $("#inputName");
@@ -78,6 +84,7 @@ $(function() {
     var state = $("#inputStateDonate");
     var zip = $("#inputZipDonate");
 
+    //Make an object that stores the values of each of the above inputs
     var newDonor = {
       email: email.val().trim(),
       password: pw.val().trim(),
@@ -91,6 +98,7 @@ $(function() {
 
     console.log(newDonor);
 
+    //Send a POST request to the controller that contains the new Donor data
     $.ajax({
       url: "/api/userDonor",
       method: "POST",
@@ -99,6 +107,7 @@ $(function() {
       console.log(response);
     });
 
+    //Clear out the fields on the form
     email.val("");
     pw.val("");
     name.val("");
@@ -108,17 +117,7 @@ $(function() {
     state.val("");
     zip.val("");
 
-
-
-
+    //Redirect the user to the New Events page
     window.location.href = "/newEvents";
-
-    $("#donor_details").text("Sign out:" +newRecpt.email);
-
-
   });
-
-
-
-  
 });
