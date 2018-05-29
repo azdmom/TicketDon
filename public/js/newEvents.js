@@ -5,49 +5,49 @@ $(document).ready(function () {
 
 
 
-    $(".submitNewEvent").on("click", function(event) {
-        event.preventDefault();
+    // $(".submitNewEvent").on("click", function(event) {
+    //     event.preventDefault();
     
-        var event_name = $("#eventNameNE");
-        var date = $("#inputDateNE");
-        var location = $("#inputLocationNE");
-        var venue_name = $("#inputVenueNE");
-        var ticket_qty = $("#ticketCountNE");
+    //     var event_name = $("#eventNameNE");
+    //     var date = $("#inputDateNE");
+    //     var location = $("#inputLocationNE");
+    //     var venue_name = $("#inputVenueNE");
+    //     var ticket_qty = $("#ticketCountNE");
 
-        var email = $("#inputEmail");
+    //     var email = $("#inputEmail");
 
 
 
-        var newEvent = {
-          event_name: event_name.val().trim(),
-          date: date.val().trim(),
-          location: location.val().trim(),
-          venue_name: venue_name.val().trim(),
-          ticket_qty: ticket_qty.val().trim()
-        };
+    //     var newEvent = {
+    //       event_name: event_name.val().trim(),
+    //       date: date.val().trim(),
+    //       location: location.val().trim(),
+    //       venue_name: venue_name.val().trim(),
+    //       ticket_qty: ticket_qty.val().trim()
+    //     };
     
-        console.log(newEvent);
+    //     console.log(newEvent);
     
-        $.ajax({
-          url: "/api/Events",
-          method: "POST",
-          data: newEvent
-        }).done(function(response) {
-          console.log(response);
-        });
+    //     $.ajax({
+    //       url: "/api/Events",
+    //       method: "POST",
+    //       data: newEvent
+    //     }).done(function(response) {
+    //       console.log(response);
+    //     });
     
-        event_name.val("");
-        date.val("");
-        location.val("");
-        venue_name.val("");
-        ticket_qty.val("");
-        email.val("");
-    
-    
-        // window.location.href = "/newEvents";
+    //     event_name.val("");
+    //     date.val("");
+    //     location.val("");
+    //     venue_name.val("");
+    //     ticket_qty.val("");
+    //     email.val("");
     
     
-      });
+    //     // window.location.href = "/newEvents";
+    
+    
+    //   });
 
 
 
