@@ -28,7 +28,7 @@ Our app can be accessed by visiting https://sleepy-depths-41979.herokuapp.com/ne
 
 ## Authors
 
-* **Drita Dhami** [Github Profile](https://github.com/azdmom)
+* [Drita Dhami](https://github.com/azdmom)
 * **Dennis Bereznyak** [Github Profile](https://github.com/bereznd1)
 * **Matt McCarthy** [Github Profile](https://github.com/mccartmz)
 * **Khalil Owens** [Github Profile](https://github.com/KhalilOwens)
