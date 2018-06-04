@@ -28,10 +28,10 @@ Our app can be accessed by visiting https://sleepy-depths-41979.herokuapp.com/ne
 
 ## Authors
 
+* [Dennis Bereznyak](https://github.com/bereznd1)
 * [Drita Dhami](https://github.com/azdmom)
-* **Dennis Bereznyak** [Github Profile](https://github.com/bereznd1)
-* **Matt McCarthy** [Github Profile](https://github.com/mccartmz)
-* **Khalil Owens** [Github Profile](https://github.com/KhalilOwens)
+* [Matt McCarthy](https://github.com/mccartmz)
+* [Khalil Owens](https://github.com/KhalilOwens)
 
 
   
